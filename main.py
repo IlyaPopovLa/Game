@@ -42,10 +42,14 @@ letters_maping = {
     ' ': ' '
 }
 
-skills_1 = skills [0].replace(letters_maping.values())
-skills_2 = skills [1].replace('е', 'е͠')
-skills_3 = skills [2].replace('е', 'е͠')
+skills_1 = skills [0]
+skills_2 = skills [1]
+skills_3 = skills [2]
 
+for letters, new_letters in letters_maping.items():
+    skills_1 = skills_1.replace(letters, new_letters)
+    skills_2 = skills_2.replace(letters, new_letters)
+    skills_3 = skills_3.replace(letters, new_letters)
 
 context = {
   "first_name": first_name,
