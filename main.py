@@ -1,6 +1,8 @@
 import file_operations
 from faker import Faker
 import random
+import os
+
 
 fake = Faker("ru_RU")
 first_name = (fake.first_name())
@@ -42,6 +44,7 @@ letters_maping = {
     ' ': ' '
 }
 
+
 skills_1 = skills [0]
 skills_2 = skills [1]
 skills_3 = skills [2]
@@ -51,12 +54,12 @@ for letters, new_letters in letters_maping.items():
     skills_2 = skills_2.replace(letters, new_letters)
     skills_3 = skills_3.replace(letters, new_letters)
 
-runic_skills = []
-new_skills = "Огненый лук"
 
-for letters, new_letters in letters_maping.items():
-    new_skills = new_skills.replace(letters, new_letters)
-runic_skills.append(new_skills)
+runic_skills = []
+runic_skills.append(skills_1)
+runic_skills.append(skills_2)
+runic_skills.append(skills_3)
+
 
 context = {
   "first_name": first_name,
@@ -68,10 +71,14 @@ context = {
   "endurance": endurance,
   "intelligence": intelligence,
   "luck": luck,
-  "skill_1": skills_1,
-  "skill_2": skills_2,
-  "skill_3": skills_3
+  "skill_1": runic_skills [0],
+  "skill_2": runic_skills [1],
+  "skill_3": runic_skills [2]
 }
 
 
-file_operations.render_template("charsheet.svg", "result.svg", context)
+os.makedirs(r".\players", mode=0o777, exist_ok=False)
+
+
+for file_name in range(10):
+    file_operations.render_template("charsheet.svg", fr".\players\result_{file_name}.svg", context)
