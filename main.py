@@ -59,24 +59,25 @@ def generate_skills():
     return random.sample(skills_list, 3)
 
 
-def save(context):
+def save(character, fname):
     os.makedirs("../test", mode=0o777, exist_ok=True)
-    for fname in range(10):
-        file_operations.render_template("charsheet.svg", fr"../test/result_{fname}.svg", context)
+    context = character
+    file_operations.render_template("charsheet.svg", fname, context)
 
 
-def main():
+def main(): 
     for character in range(10):
-        character = generate_character()
-        skills = generate_skills()
-        runic_skills = rep_letters(skills)
-
-        character.update({
-            "skill_1": runic_skills[0],
-            "skill_2": runic_skills[1],
-            "skill_3": runic_skills[2],
-        })   
-    print(character)
+        for fname in range(10):
+            character = generate_character()
+            skills = generate_skills()
+            runic_skills = rep_letters(skills)
+            character.update({
+                "skill_1": runic_skills[0],
+                "skill_2": runic_skills[1],
+                "skill_3": runic_skills[2],
+            })
+            fname = fr"../test/result_{fname}.svg"
+            save(character, fname)
 
 
 if __name__ == '__main__':
