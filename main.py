@@ -59,9 +59,8 @@ def generate_skills():
     return random.sample(skills_list, 3)
 
 
-def save(character, fname):
+def save(context, fname):
     os.makedirs("../test", mode=0o777, exist_ok=True)
-    context = character
     file_operations.render_template("charsheet.svg", fname, context)
 
 
