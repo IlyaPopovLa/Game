@@ -36,7 +36,7 @@ def rep_letters(skills):
         'У': 'У͒͠', 'Ф': 'Ф̋̋', 'Х': 'Х͒͠', 'Ц': 'Ц̋', 'Ч': 'Ч̋͠',
         'Ш': 'Ш͒͠', 'Щ': 'Щ̋', 'Ъ': 'Ъ̋͠', 'Ы': 'Ы̋͠', 'Ь': 'Ь̋',
         'Э': 'Э͒͠', 'Ю': 'Ю̋͠', 'Я': 'Я̋',
-    }  
+    }
     runic_skills = []
     for skill in skills:
         for letters, new_letters in letters_mapping.items():
@@ -64,7 +64,7 @@ def save(context, fname):
     file_operations.render_template("charsheet.svg", fname, context)
 
 
-def main(): 
+def main():
     for character in range(10):
         for fname in range(10):
             character = generate_character()
