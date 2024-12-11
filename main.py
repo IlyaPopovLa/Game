@@ -3,15 +3,15 @@ from faker import Faker
 import random
 import os
 
-fake = Faker("ru_RU")
+FAKER = Faker("ru_RU")
 
 
 def generate_character():
     return {
-        "first_name": fake.first_name(),
-        "last_name": fake.last_name(),
-        "job": fake.job(),
-        "town": fake.city(),
+        "first_name": FAKER.first_name(),
+        "last_name": FAKER.last_name(),
+        "job": FAKER.job(),
+        "town": FAKER.city(),
         "strength": random.randint(3, 18),
         "agility": random.randint(3, 18),
         "endurance": random.randint(3, 18),
